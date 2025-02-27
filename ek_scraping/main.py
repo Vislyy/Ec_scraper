@@ -2,8 +2,7 @@
 
 import requests
 from bs4 import BeautifulSoup
-import lxml
-from lxml import html
+import time
 
 import json
 import csv
@@ -16,6 +15,7 @@ headers = {
 products_dict = {
 
 }
+
 def editing_url(url):
     if not "?katalog_=" in url:
         url_arg = url.split("/")
@@ -25,11 +25,44 @@ def editing_url(url):
     return url
 
 #writing info about product
-def writing_info_json(file_name):
+def writing_info(file_name):
+    # Запис у JSON файл (залишимо це без змін)
     with open(f"data/{file_name}.json", "w", encoding="utf-8") as file:
         json.dump(products_dict, file, indent=4, ensure_ascii=False)
 
-#Get all pages of categoryfunc
+    # Запис у CSV файл
+    with open(f"data/{file_name}.csv", "w", newline='', encoding="utf-8") as file:
+        writer = csv.writer(file, delimiter=';')
+
+        # Заголовки для CSV (ми додаємо ціни, лінк і характеристики продукту)
+        headers = ['Product', 'Min. Price', 'Max. Price', 'Link']
+
+        # Додаємо до заголовків всі можливі характеристики з першого продукту
+        if products_dict:
+            first_product = next(iter(products_dict.values()))  # Беремо перший продукт
+            for spec_key in first_product['Short specifications'].keys():
+                headers.append(spec_key)  # Додаємо ключі характеристик до заголовка
+
+        writer.writerow(headers)
+
+            # Записуємо інформацію про кожен продукт
+        for product_name, product_info in products_dict.items():
+            row = [
+                product_name,
+                product_info['Min price'],
+                product_info['Max price'],
+                product_info['Link']
+            ]
+
+            # Додаємо характеристики продукту в рядок
+            for spec_key in headers[4:]:  # Після 4-го елементу додаємо характеристики
+                row.append(product_info['Short specifications'].get(spec_key,
+                                                                        ''))  # Якщо немає характеристики, ставимо порожньо
+
+            writer.writerow(row)
+
+
+#Get all pages of category func
 def get_all_pages(url):
     req = requests.get(url, headers=headers)
     src = req.text
@@ -99,9 +132,8 @@ def get_info(url):
                 counter -= 1
                 print(f"[!] Pages to go: {counter}")
             else:
-                print(f"[!] Page {page} empty")
+                print(f"[!] Page {page} empty (Product not pertain to your category)")
                 empty_pages += 1
-                print(empty_pages)
                 if empty_pages == 10:
                     print("[!] Function execution closed due to too many empty pages")
                     return
@@ -116,7 +148,7 @@ def main():
     file_name = all_info_for_a_scraper[1]
     url = editing_url(url)
     get_info(url)
-    writing_info_json(file_name)
+    writing_info(file_name)
 
 if __name__ == '__main__':
     try:

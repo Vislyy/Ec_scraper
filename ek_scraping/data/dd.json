@@ -1,0 +1,51 @@
+{
+    "Haier Super Aqua Monoblok 11 11kW": {
+        "Min price": "Price not available",
+        "Max price": "Price not available",
+        "Link": "e-catalog.co.uk/HAIER-SUPER-AQUA-MONOBLOK-11.htm",
+        "Short specifications": {
+            "Suitable for": "heating and DHW",
+            "Heat source": "air-water",
+            "Heat output": "heat 11 kW, cooling 13.5 kW",
+            "Consumption": "2.61 kW, 230 V",
+            "W35": "class A++",
+            "W55": "class A++",
+            "In box": "outdoor monoblock"
+        }
+    },
+    "LG HU143MRB.U30/HN1600MC.NK1/HA063C.E1 14kW": {
+        "Min price": "Price not available",
+        "Max price": "Price not available",
+        "Link": "e-catalog.co.uk/LG-HU143MRB-U30-HN1600MC-NK1-HA063C-E1.htm",
+        "Short specifications": {
+            "Suitable for": "heating and DHW",
+            "Heat source": "air-water",
+            "Heat output": "heat 14 kW, cooling 14 kW",
+            "Consumption": "2.86 kW, 400 V"
+        }
+    },
+    "Hayward Classic Powerline Inverter 6 5kW": {
+        "Min price": "Price not available",
+        "Max price": "Price not available",
+        "Link": "e-catalog.co.uk/HAYWARD-CLASSIC-POWERLINE-INVERTER-6.htm",
+        "Short specifications": {
+            "Suitable for": "for pool",
+            "Heat source": "air-water",
+            "Heat output": "heat 5.38 kW",
+            "Consumption": "1.09 kW, 230 V",
+            "In box": "outdoor monoblock"
+        }
+    },
+    "Azuro BP-85WS 8kW": {
+        "Min price": "Price not available",
+        "Max price": "Price not available",
+        "Link": "e-catalog.co.uk/AZURO-BP-85WS.htm",
+        "Short specifications": {
+            "Suitable for": "for pool",
+            "Heat source": "air-water",
+            "Heat output": "heat 8.5 kW, cooling 6.2 kW",
+            "Consumption": "1.55 kW, 230 V",
+            "In box": "outdoor monoblock"
+        }
+    }
+}
