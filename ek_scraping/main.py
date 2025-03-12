@@ -26,7 +26,7 @@ def editing_url(url):
 
 #writing info about product
 def writing_info(file_name):
-    # Запис у JSON файл (залишимо це без змін)
+    # Запис у JSON файл
     with open(f"data/{file_name}.json", "w", encoding="utf-8") as file:
         json.dump(products_dict, file, indent=4, ensure_ascii=False)
 
